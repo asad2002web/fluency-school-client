@@ -1,8 +1,11 @@
 import React from 'react'
+import Bunner from '../Bunner/Bunner'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>
+        <Bunner></Bunner>
+    </div>
   )
 }
 
