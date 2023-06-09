@@ -1,8 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from '../../src/assets/logo/logo-white.png'
+import Logo from "../../src/assets/logo/logo-white.png";
+import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
+  const { logOut, user } = useAuth();
+  // console.log(user);
+  // sing out
+  const handleSignOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
   const navOptions = (
     <>
       <li>
@@ -44,16 +53,29 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/" className=" normal-case text-xl">
-            <img src={Logo} alt="" />
+          <img src={Logo} alt="" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 text-xl">
-          {navOptions}
-        </ul>
+        <ul className="menu menu-horizontal px-1 text-xl">{navOptions}</ul>
       </div>
       <div className="navbar-end">
-        <Link to='/login' className="btn">Login</Link>
+        {user ? (
+          <>
+          <img
+          src={user.photoURL}
+          title={user.displayName}
+          alt=""
+          className="w-10 h-10 rounded-full mr-4 "
+        />
+          <Link onClick={handleSignOut} to="/" className="btn">
+            Log Out
+          </Link> </>
+        ) : (
+          <Link to="/login" className="btn">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

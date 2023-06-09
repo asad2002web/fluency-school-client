@@ -1,6 +1,8 @@
-import React from "react";
-import { FaGoogle } from "react-icons/fa";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/authProvider";
+
+import SocialLogin from "../../Shared/SocialLogin";
 
 const Login = () => {
   return (
@@ -51,7 +53,7 @@ const Login = () => {
               </div>
             </form>
             <div className="mt-4 text-grey-600">
-            Don't have an account?{" "}
+              Don't have an account?{" "}
               <span>
                 <Link
                   to="/register"
@@ -67,14 +69,7 @@ const Login = () => {
               <hr className="w-full" />
             </div>
             <div className="my-6 space-y-2">
-              <button
-                aria-label="Login with Google"
-                type="button"
-                className="flex items-center justify-center w-full p-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
-              >
-                <FaGoogle></FaGoogle>
-                <p>Login with Google</p>
-              </button>
+              <SocialLogin></SocialLogin>
             </div>
           </div>
         </div>
