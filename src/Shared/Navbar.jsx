@@ -18,7 +18,7 @@ const Navbar = () => {
         <Link>Home</Link>
       </li>
       <li>
-        <Link>Instructors</Link>
+        <Link to='/instructors'>Instructors</Link>
       </li>
       <li>
         <Link>Classes</Link>
@@ -63,7 +63,8 @@ const Navbar = () => {
         {user ? (
           <>
           <img
-          src={user.photoURL}
+          src={user?.photoURL}
+          
           title={user.displayName}
           alt=""
           className="w-10 h-10 rounded-full mr-4 "

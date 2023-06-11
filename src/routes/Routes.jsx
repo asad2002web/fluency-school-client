@@ -4,6 +4,8 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import Instructors from "../pages/Instructors/Instructors";
+import PrivateRoute from "./PrivateRoute";
 
 export const routes = createBrowserRouter([
   {
@@ -23,6 +25,13 @@ export const routes = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+      {
+        path: "/instructors",
+        element: <PrivateRoute><Instructors></Instructors></PrivateRoute>,
+      },
     ],
   },
+  {
+    git 
+  }
 ]);
