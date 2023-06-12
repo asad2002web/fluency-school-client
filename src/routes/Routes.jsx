@@ -6,6 +6,8 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Instructors from "../pages/Instructors/Instructors";
 import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../layouts/Dashboard";
+import UserHome from "../pages/Dashboard/UserHome";
 
 export const routes = createBrowserRouter([
   {
@@ -32,6 +34,13 @@ export const routes = createBrowserRouter([
     ],
   },
   {
-    git 
+    path:'dashboard',
+    element: <PrivateRoute><Dashboard></Dashboard> </PrivateRoute>,
+    children:[
+      {
+        path:"userhome",
+        element:<UserHome></UserHome>
+      }
+    ]
   }
 ]);

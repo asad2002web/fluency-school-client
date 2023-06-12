@@ -1,17 +1,37 @@
 import React, { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
   const { googleSignIn } = useAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
   const handleGoogleLogin = () => {
     googleSignIn()
       .then((result) => {
         const loggedGoogle = result.user;
         console.log(loggedGoogle);
-        navigate("/");
+
+        const saveUser = {
+          name: loggedGoogle.displayName,
+          email: loggedGoogle.email,
+          role: 'student'
+        };
+        fetch("http://localhost:4000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(saveUser),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            navigate(from, { replace: true });
+          });
       })
       .catch((error) => {
         console.log(error.message);

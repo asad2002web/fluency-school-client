@@ -23,6 +23,11 @@ const Navbar = () => {
       <li>
         <Link>Classes</Link>
       </li>
+      {
+        user ? <li>
+        <Link to='/dashboard'>Dashboard</Link>
+      </li> : ''
+      }
     </>
   );
   return (

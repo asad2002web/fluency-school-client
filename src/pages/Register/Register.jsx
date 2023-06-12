@@ -19,17 +19,36 @@ const Register = () => {
 
   const password = watch("password");
   const onSubmit = (data) => {
-    console.log(data);
-
+console.log(data)
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
-      updateUserProfile(data.name, data.photoURL);
-    });
-    reset();
-    Swal.fire("Welcome!", "Your Register Successfull!", "success");
 
-    navigate("/");
+      // updateUserProfile(data.name, data.photoURL);
+      updateUserProfile(data.name, data.photoURL).then(() => {
+        const saveUser = { name: data.name, email: data.email, role: 'student'};
+        fetch("http://localhost:4000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(saveUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              reset();
+              Swal.fire(
+                'Welcome!',
+                'Your Registation Succesfull !',
+                'success'
+              )
+              navigate("/");
+            }
+          })
+          .catch((error) => console.log(error));
+      });
+    });
   };
 
   return (
