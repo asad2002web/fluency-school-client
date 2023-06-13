@@ -19,6 +19,7 @@ const SocialLogin = () => {
         const saveUser = {
           name: loggedGoogle.displayName,
           email: loggedGoogle.email,
+          photo: loggedGoogle.photoURL,
           role: 'student'
         };
         fetch("http://localhost:4000/users", {

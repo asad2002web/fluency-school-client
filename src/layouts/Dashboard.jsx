@@ -1,17 +1,12 @@
-import {
-  FaShoppingCart,
-  FaWallet,
-  FaCalendarAlt,
-  FaHome,
-  FaUtensils,
-  FaBook,
-  FaUsers,
-} from "react-icons/fa";
-import { NavLink, Outlet } from "react-router-dom";
+import { FaBookOpen, FaBookReader, FaHome, FaUsers } from "react-icons/fa";
+import { Link, NavLink, Outlet } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const Dashboard = () => {
+  const { user } = useAuth();
   // TODO: load data from the server to have dynamic isAdmin based on Data
-
+  const isAdmin = true;
+  const isInstructors = false;
   return (
     <section>
       <div className="drawer lg:drawer-open">
@@ -30,94 +25,60 @@ const Dashboard = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
-
-            {/* {isAdmin ? (
+            {user && isAdmin ? (
               <>
+                <li>Admin</li>
                 <li>
-                  <NavLink to="/dashboard/home">
-                    <FaHome></FaHome> Admin Home
-                  </NavLink>
+                  <Link to="">
+                    <FaBookReader></FaBookReader> Manage Classes
+                  </Link>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/reservations">
-                   
-                    <FaUtensils></FaUtensils> Add Items
-                  </NavLink>
+                  <Link to="allusers">
+                    <FaUsers></FaUsers> Manage Users
+                  </Link>
+                </li>
+              </>
+            ) : user && isInstructors ? (
+              <>
+                <li>Instructor</li>
+                <li>
+                  <Link to="">
+                    <FaBookReader></FaBookReader> Add A Class
+                  </Link>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/history">
-                    <FaWallet></FaWallet> Manage Items
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/dashboard/history">
-                    <FaBook></FaBook> Manage Bookings
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/dashboard/allusers">
-                    <FaUsers></FaUsers> All Users
-                  </NavLink>
+                  <Link to="">
+                    <FaBookOpen></FaBookOpen> My Classes
+                  </Link>
                 </li>
               </>
             ) : (
               <>
+                <li>User</li>
                 <li>
-                  <NavLink to="/dashboard/home">
-                    <FaHome></FaHome> User Home
-                  </NavLink>
+                  <Link to="">
+                    <FaBookReader></FaBookReader> My Selected Class
+                  </Link>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/reservations">
-                    <FaCalendarAlt></FaCalendarAlt> Reservations
-                  </NavLink>
+                  <Link to="">
+                    <FaUsers></FaUsers> My Enrolled Class
+                  </Link>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/history">
-                    <FaWallet></FaWallet> Payment History
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/dashboard/mycart">
-                    <FaShoppingCart></FaShoppingCart> My Cart
-                  </NavLink>
+                  <Link to="">
+                    <FaUsers></FaUsers> Pyment History
+                  </Link>
                 </li>
               </>
-            )} */}
-            <>
-                <li>
-                  <NavLink to="">
-                    <FaHome></FaHome> User Home
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="">
-                    <FaCalendarAlt></FaCalendarAlt> Reservations
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/">
-                    <FaWallet></FaWallet> Payment History
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/">
-                    <FaShoppingCart></FaShoppingCart> My Cart
-                  </NavLink>
-                </li>
-              </>
+            )}
 
             <div className="divider"></div>
             <li>
               <NavLink to="/">
                 <FaHome></FaHome> Home
               </NavLink>
-            </li>
-            <li>
-              <NavLink to="/"> Our Menu</NavLink>
-            </li>
-            <li>
-              <NavLink to="">Order Food</NavLink>
             </li>
           </ul>
         </div>

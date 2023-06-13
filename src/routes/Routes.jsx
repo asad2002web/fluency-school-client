@@ -8,6 +8,7 @@ import Instructors from "../pages/Instructors/Instructors";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../layouts/Dashboard";
 import UserHome from "../pages/Dashboard/UserHome";
+import AllUsers from "../pages/Dashboard/AllUsers";
 
 export const routes = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ export const routes = createBrowserRouter([
       {
         path:"userhome",
         element:<UserHome></UserHome>
+      },
+      {
+        path: 'allusers',
+        element: <AllUsers></AllUsers>
       }
     ]
   }
