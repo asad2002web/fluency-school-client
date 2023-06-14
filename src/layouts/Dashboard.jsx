@@ -5,8 +5,8 @@ import useAuth from "../hooks/useAuth";
 const Dashboard = () => {
   const { user } = useAuth();
   // TODO: load data from the server to have dynamic isAdmin based on Data
-  const isAdmin = true;
-  const isInstructors = false;
+  const isAdmin = false;
+  const isInstructors = true;
   return (
     <section>
       <div className="drawer lg:drawer-open">
@@ -43,12 +43,12 @@ const Dashboard = () => {
               <>
                 <li>Instructor</li>
                 <li>
-                  <Link to="">
+                  <Link to="addclasses">
                     <FaBookReader></FaBookReader> Add A Class
                   </Link>
                 </li>
                 <li>
-                  <Link to="">
+                  <Link to="myclass">
                     <FaBookOpen></FaBookOpen> My Classes
                   </Link>
                 </li>
