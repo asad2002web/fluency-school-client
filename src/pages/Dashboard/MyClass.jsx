@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import useAuth from "../../hooks/useAuth";
 
 const MyClasse = () => {
+    const {user} = useAuth()
   const [myClasses, setMyClasses] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/addedClass")
+    fetch(`http://localhost:4000/addedClass/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setMyClasses(data);
