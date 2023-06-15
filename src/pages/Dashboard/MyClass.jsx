@@ -16,8 +16,8 @@ const MyClasse = () => {
     <>
       <div>Totall classess : {myClasses.length}</div>
       <hr />
-      <div classesName="overflow-x-auto w-full">
-        <table classesName="table">
+      <div>
+        <table classesName="table w-1/2">
           {/* head */}
           <thead className="w-full">
             <tr>
