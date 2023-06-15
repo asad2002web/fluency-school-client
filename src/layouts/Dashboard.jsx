@@ -1,11 +1,14 @@
 import { FaBookOpen, FaBookReader, FaHome, FaUsers } from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructors";
 
 const Dashboard = () => {
   const { user } = useAuth();
   // TODO: load data from the server to have dynamic isAdmin based on Data
-  const isAdmin = false;
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor()
   const isInstructors = true;
   return (
     <section>
