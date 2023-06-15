@@ -34,7 +34,7 @@ Language-focused summer camp for all ages. Enhance fluency, cultural understandi
 
 ## Deploy Link
 
-**Live Link**  **[Click Here](")**
+**Live Link**  **[Click Here](https://fluency-school.web.app/)**
 
 **Github Client Site:**  **[Click Here](https://github.com/programming-hero-web-course1/b712-summer-camp-client-side-asad2002web)**
 
