@@ -14,6 +14,8 @@ import MyClass from "../pages/Dashboard/MyClass";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
 import ManageClass from "../pages/Dashboard/ManageClass";
+import Classes from "../pages/Classes/Classes";
+import FeedBack from "../pages/Dashboard/FeedBack";
 
 export const routes = createBrowserRouter([
   {
@@ -35,11 +37,11 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/instructors",
-        element: (
-          <PrivateRoute>
-            <Instructors></Instructors>
-          </PrivateRoute>
-        ),
+        element: <Instructors></Instructors>,
+      },
+      {
+        path: "/classes",
+        element: <Classes></Classes>,
       },
     ],
   },
@@ -57,7 +59,11 @@ export const routes = createBrowserRouter([
       },
       {
         path: "manage-class",
-        element: <AdminRoute><ManageClass></ManageClass></AdminRoute>,
+        element: (
+          <AdminRoute>
+            <ManageClass></ManageClass>
+          </AdminRoute>
+        ),
       },
       {
         path: "allusers",
@@ -68,12 +74,24 @@ export const routes = createBrowserRouter([
         ),
       },
       {
+        path:'feedback/:id',
+     element: <FeedBack></FeedBack>
+    },
+      {
         path: "myclass",
-        element: <InstructorRoute><MyClass></MyClass></InstructorRoute>,
+        element: (
+          <InstructorRoute>
+            <MyClass></MyClass>
+          </InstructorRoute>
+        ),
       },
       {
         path: "addclasses",
-        element: <InstructorRoute><AddClass></AddClass></InstructorRoute>,
+        element: (
+          <InstructorRoute>
+            <AddClass></AddClass>
+          </InstructorRoute>
+        ),
       },
     ],
   },
