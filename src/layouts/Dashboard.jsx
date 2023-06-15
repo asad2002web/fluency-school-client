@@ -9,7 +9,7 @@ const Dashboard = () => {
   // TODO: load data from the server to have dynamic isAdmin based on Data
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor()
-  const isInstructors = true;
+  // const isInstructors = true;
   return (
     <section>
       <div className="drawer lg:drawer-open">
@@ -30,9 +30,9 @@ const Dashboard = () => {
             {/* Sidebar content here */}
             {user && isAdmin ? (
               <>
-                <li>Admin</li>
+                <li className="text-xl font-semibold">Admin</li>
                 <li>
-                  <Link to="">
+                  <Link to="manage-class">
                     <FaBookReader></FaBookReader> Manage Classes
                   </Link>
                 </li>
@@ -42,9 +42,9 @@ const Dashboard = () => {
                   </Link>
                 </li>
               </>
-            ) : user && isInstructors ? (
+            ) : user && isInstructor ? (
               <>
-                <li>Instructor</li>
+                <li className="text-xl font-semibold">Instructor</li>
                 <li>
                   <Link to="addclasses">
                     <FaBookReader></FaBookReader> Add A Class
@@ -58,7 +58,7 @@ const Dashboard = () => {
               </>
             ) : (
               <>
-                <li>User</li>
+                <li className="text-xl font-semibold">User</li>
                 <li>
                   <Link to="">
                     <FaBookReader></FaBookReader> My Selected Class
