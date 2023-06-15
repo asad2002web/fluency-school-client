@@ -42,11 +42,12 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
   // Update Profile
-  const updateUserProfile =  (name, photo) => {
-    return  updateProfile(auth.currentUser, {
-        displayName: name, photoURL: photo
+  const updateUserProfile = (name, photo) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
     });
-}
+  };
 
   //  Satate Change
   useEffect(() => {
@@ -55,18 +56,17 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
 
       // get and set token
-      if(currentUser){
-        axios.post('http://localhost:4000/jwt', {email: currentUser.email})
-        .then(data =>{
+      if (currentUser) {
+        axios
+          .post("http://localhost:4000/jwt", { email: currentUser.email })
+          .then((data) => {
             // console.log(data.data.token)
-            localStorage.setItem('access-token', data.data.token)
+            localStorage.setItem("access-token", data.data.token);
             setLoading(false);
-        })
-    }
-    else{
-        localStorage.removeItem('access-token')
-    }
-
+          });
+      } else {
+        localStorage.removeItem("access-token");
+      }
 
       // setLoading(false);
     });
@@ -82,7 +82,7 @@ const AuthProvider = ({ children }) => {
     user,
     logOut,
     signIn,
-    loading
+    loading,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

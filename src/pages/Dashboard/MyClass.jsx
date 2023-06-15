@@ -16,30 +16,35 @@ const MyClasse = () => {
     <>
       <div>Totall classess : {myClasses.length}</div>
       <hr />
-      <div>
-        <table classesName="table w-1/2">
-          {/* head */}
-          <thead className="w-full">
-            <tr>
-              <th>#</th>
-              <th>Image</th>
-              <th>Name</th>
-              <th>Stutus</th>
-              <th>FeedBack</th>
-            </tr>
-          </thead>
-          {myClasses.map((user, i) => (
-            <tbody key={i}>
-              <tr className="bg-base-200">
-                <td>{i + 1}</td>
-                <td> <img className="w-12 h-12" src={user.imageURL} alt="" /> </td>
-                <td>{user.InstructorName}</td>
-                <td>{user.stutus}</td>
-                <td>{""}</td>
-              </tr>
-            </tbody>
-          ))}
-        </table>
+      <div className="border-2 w-1/2">
+
+      <div className="overflow-x-auto">
+  <table className="table">
+    {/* head */}
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Stutus</th>
+        <th>FeedBack</th>
+      </tr>
+    </thead>
+    <tbody>
+      {myClasses.map((classes, i) => <tr className="bg-base-200">
+        <th>{i+1}</th>
+        <td>
+          <img className="w-12 h-12" src={classes.imageURL} alt="" />
+        </td>
+        <td>{classes.className}</td>
+        <td>{classes.stutus}</td>
+        <td>{""}</td>
+      </tr>)}
+      
+    </tbody>
+  </table>
+</div>
+        
       </div>
     </>
   );
