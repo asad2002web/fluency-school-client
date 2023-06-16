@@ -8,7 +8,7 @@ const AllUsers = () => {
   let isMakeInstructorDisabled = false;
 
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch("http://localhost:4000/users");
+    const res = await fetch("https://fluency-scholl-server-asad2002web-gmailcom.vercel.app/users");
     return res.json();
   });
   // useEffect(() => {
@@ -45,7 +45,7 @@ const AllUsers = () => {
   };
 
   const handleMakeInstructor = (user) => {
-    fetch(`http://localhost:4000/users/admin/${user._id}`, {
+    fetch(`http://localhost:4000/${user._id}`, {
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json'

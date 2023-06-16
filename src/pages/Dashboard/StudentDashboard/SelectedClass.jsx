@@ -3,6 +3,7 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const SelectedClass = () => {
     const { user } = useAuth()
@@ -80,8 +81,9 @@ const SelectedClass = () => {
                 <td>{item.availableSeat}</td>
 
                 <td>
-                  {/* <Pays item={item}> </Pays> */}
-                  <h1>Pay</h1>
+                  <Link to={`/dashboard/pyment-class/${item._id}`}>
+                  <button className="btn btn-outline btn-info">Pay Now</button>
+                  </Link>
                 </td>
                 <td>
                   <button

@@ -1,4 +1,4 @@
-import { FaBookOpen, FaBookReader, FaHome, FaUsers } from "react-icons/fa";
+import { FaBookOpen, FaBookReader, FaHome, FaPaypal, FaUsers } from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useAdmin from "../hooks/useAdmin";
@@ -34,6 +34,7 @@ const Dashboard = () => {
                   <img className="w-24" src={user.photoURL} alt="" />
                 </li>
                 <li className="text-xl font-semibold my-4">Admin</li>
+                <li className="text-xl my-5">{user.email}</li>
                 <li>
                   <Link to="manage-class">
                     <FaBookReader></FaBookReader> Manage Classes
@@ -50,6 +51,7 @@ const Dashboard = () => {
                <li className="text-xl font-semibold">
                   <img className="w-24" src={user.photoURL} alt="" />
                 </li>
+                <li className="text-xl my-5">{user.email}</li>
                 <li className="text-xl font-semibold my-4">Instructor</li>
                 <li>
                   <Link to="addclasses">
@@ -67,6 +69,7 @@ const Dashboard = () => {
                 <li className="text-xl font-semibold">
                   <img className="w-24" src={user.photoURL} alt="" />
                 </li>
+                <li className="text-xl my-5">{user.email}</li>
                 <li className="text-xl font-semibold my-5">Student</li>
                 <li>
                   <Link to="select-class">
@@ -80,7 +83,7 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <Link to="pyment-class">
-                    <FaUsers></FaUsers> Pyment History
+                    <FaPaypal></FaPaypal> Pyment History
                   </Link>
                 </li>
               </>

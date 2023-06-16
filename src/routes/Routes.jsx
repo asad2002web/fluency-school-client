@@ -19,6 +19,7 @@ import FeedBack from "../pages/Dashboard/FeedBack";
 import SelectedClass from "../pages/Dashboard/StudentDashboard/SelectedClass";
 import EnrollClass from "../pages/Dashboard/StudentDashboard/EnrollClass";
 import PymentHistory from "../pages/Dashboard/StudentDashboard/PymentHistory";
+import Payment from "../pages/Dashboard/StudentDashboard/Payment";
 
 export const routes = createBrowserRouter([
   {
@@ -78,7 +79,7 @@ export const routes = createBrowserRouter([
       },
       {
         path:'feedback/:id',
-     element: <FeedBack></FeedBack>
+     element: <AdminRoute><FeedBack></FeedBack></AdminRoute>
     },
       {
         path: "myclass",
@@ -98,16 +99,22 @@ export const routes = createBrowserRouter([
       },
       {
         path: "select-class",
-        element: <SelectedClass></SelectedClass>,
+        element: <PrivateRoute><SelectedClass></SelectedClass></PrivateRoute>,
       },
       {
         path: "enroll-class",
-        element: <EnrollClass></EnrollClass>,
+        element: <PrivateRoute><EnrollClass></EnrollClass></PrivateRoute>,
       },
       {
         path: "pyment-class",
-        element: <PymentHistory></PymentHistory>,
+        element: <PrivateRoute><PymentHistory></PymentHistory></PrivateRoute>,
+      },
+      {
+        path: "pyment-class/:id",
+        element: <PrivateRoute><Payment></Payment></PrivateRoute>,
       },
     ],
   },
 ]);
+
+// TODO: Private Route Apply
