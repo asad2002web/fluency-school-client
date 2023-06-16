@@ -2,9 +2,9 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
-const CheckoutForm = ({ price }) => {
-  console.log(price);
+const CheckoutForm = ({ price, item }) => {
   const stripe = useStripe();
   const elements = useElements();
   const {user}= useAuth();
@@ -17,7 +17,6 @@ const CheckoutForm = ({ price }) => {
   useEffect(() => {
     if (price > 0) {
       axiosSecure.post("/create-payment-intent", { price }).then((res) => {
-        console.log(res.data.clientSecret);
         setClientSecret(res.data.clientSecret);
       });
     }
@@ -66,27 +65,31 @@ const CheckoutForm = ({ price }) => {
     }
 
     setProcessing(false)
+
     if (paymentIntent.status === 'succeeded') {
         setTransactionId(paymentIntent.id);
-        // save payment information to the server
-        // const payment = {
-        //     email: user?.email,
-        //     transactionId: paymentIntent.id,
-        //     price,
-        //     date: new Date(),
-        //     quantity: cart.length,
-        //     cartItems: cart.map(item => item._id),
-        //     menuItems: cart.map(item => item.menuItemId),
-        //     status: 'service pending',
-        //     itemNames: cart.map(item => item.name)
-        // }
-        // axiosSecure.post('/payments', payment)
-        //     .then(res => {
-        //         console.log(res.data);
-        //         if (res.data.result.insertedId) {
-        //             // display confirm
-        //         }
-        //     })
+        // save Data to database server
+        const payment = {
+            email: user?.email,
+            transactionId: paymentIntent.id,
+            className: item.className,
+            imageURL: item.imageURL,
+            availableSeat: item.seats,
+            date: new Date(),
+            id: item._id,
+            enrolledStuNum: 0
+        }
+
+        axiosSecure.patch('/payments', payment)
+            .then(res => {
+                if (res.data.insertedId) {
+                    Swal.fire(
+                        'Good job!',
+                        'You clicked the button!',
+                        'success'
+                      )
+                }
+            })
     }
 
   };

@@ -15,7 +15,7 @@ const AddClass = () => {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    const addClass = { InstructorName: data.InstructorName , availableSeat:data.availableSeat, className:data.className,email:data.email,imageURL:data.imageURL,price:parseInt(data.price), stutus: 'pending'};
+    const addClass = { InstructorName: data.InstructorName , availableSeat:parseInt(data.availableSeat) , className:data.className,email:data.email,imageURL:data.imageURL,price:parseInt(data.price), stutus: 'pending'};
         fetch("http://localhost:4000/addclass", {
           method: "POST",
           headers: {
