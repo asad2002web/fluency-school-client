@@ -12,7 +12,7 @@ const AllUsers = () => {
     return res.json();
   });
   // useEffect(() => {
-  //   fetch("http://localhost:4000/users")
+  //   fetch("https://fluency-scholl-server-asad2002web-gmailcom.vercel.app/users")
   //     .then((res) => res.json())
   //     .then((data) => {
   //       setAllUsers(data);
@@ -20,7 +20,7 @@ const AllUsers = () => {
   // }, []);
 
   const handleMakeAdmin = (user) => {
-    fetch(`http://localhost:4000/users/admin/${user._id}`, {
+    fetch(`https://fluency-scholl-server-asad2002web-gmailcom.vercel.app/users/admin/${user._id}`, {
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ const AllUsers = () => {
   };
 
   const handleMakeInstructor = (user) => {
-    fetch(`http://localhost:4000/${user._id}`, {
+    fetch(`https://fluency-scholl-server-asad2002web-gmailcom.vercel.app/${user._id}`, {
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json'

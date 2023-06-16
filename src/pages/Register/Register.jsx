@@ -27,7 +27,7 @@ console.log(data)
       // updateUserProfile(data.name, data.photoURL);
       updateUserProfile(data.name, data.photoURL).then(() => {
         const saveUser = { name: data.name, email: data.email, photo: data.photoURL, role: 'student'};
-        fetch("http://localhost:4000/users", {
+        fetch("https://fluency-scholl-server-asad2002web-gmailcom.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

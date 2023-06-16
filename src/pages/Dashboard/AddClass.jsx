@@ -16,7 +16,7 @@ const AddClass = () => {
   const onSubmit = (data) => {
     console.log(data);
     const addClass = { InstructorName: data.InstructorName , availableSeat:parseInt(data.availableSeat) , className:data.className,email:data.email,imageURL:data.imageURL,price:parseInt(data.price), stutus: 'pending'};
-        fetch("http://localhost:4000/addclass", {
+        fetch("https://fluency-scholl-server-asad2002web-gmailcom.vercel.app/addclass", {
           method: "POST",
           headers: {
             "content-type": "application/json",

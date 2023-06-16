@@ -22,7 +22,7 @@ const SocialLogin = () => {
           photo: loggedGoogle.photoURL,
           role: 'student'
         };
-        fetch("http://localhost:4000/users", {
+        fetch("https://fluency-scholl-server-asad2002web-gmailcom.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
