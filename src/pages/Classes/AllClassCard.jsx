@@ -9,11 +9,11 @@ const AllClassCard = ({ allclass }) => {
     allclass;
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
   const handleSelect = () => {
     const selected = {
       InstructorName,
-      availableSeat,
+      availableSeat: parseInt(availableSeat),
       price,
       className,
       imageURL,
@@ -23,24 +23,21 @@ const AllClassCard = ({ allclass }) => {
     axiosSecure
       .post("/select", selected)
       .then((response) => {
-        console.log(response)
+        console.log(response);
         if (response.data.insertedId) {
-            Swal.fire(
-                '',
-                'Class Added!',
-                'success'
-              )
+          Swal.fire("", "Class Added!", "success");
         }
       })
       .catch((error) => {
-        setError(error)
+        setError(error);
         toast.warn("Allready added !", {
-            position: toast.POSITION.TOP_CENTER,
-            autoClose: 500
-          });
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 500,
+        });
       });
   };
-  
+
+
   return (
     <div className="card bg-base-100 shadow mx-2 w-78">
       <figure>

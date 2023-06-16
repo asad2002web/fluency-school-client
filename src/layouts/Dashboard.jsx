@@ -30,7 +30,10 @@ const Dashboard = () => {
             {/* Sidebar content here */}
             {user && isAdmin ? (
               <>
-                <li className="text-xl font-semibold">Admin</li>
+               <li className="text-xl font-semibold">
+                  <img className="w-24" src={user.photoURL} alt="" />
+                </li>
+                <li className="text-xl font-semibold my-4">Admin</li>
                 <li>
                   <Link to="manage-class">
                     <FaBookReader></FaBookReader> Manage Classes
@@ -44,7 +47,10 @@ const Dashboard = () => {
               </>
             ) : user && isInstructor ? (
               <>
-                <li className="text-xl font-semibold">Instructor</li>
+               <li className="text-xl font-semibold">
+                  <img className="w-24" src={user.photoURL} alt="" />
+                </li>
+                <li className="text-xl font-semibold my-4">Instructor</li>
                 <li>
                   <Link to="addclasses">
                     <FaBookReader></FaBookReader> Add A Class
@@ -58,19 +64,22 @@ const Dashboard = () => {
               </>
             ) : (
               <>
-                <li className="text-xl font-semibold">User</li>
+                <li className="text-xl font-semibold">
+                  <img className="w-24" src={user.photoURL} alt="" />
+                </li>
+                <li className="text-xl font-semibold my-5">Student</li>
                 <li>
-                  <Link to="">
+                  <Link to="select-class">
                     <FaBookReader></FaBookReader> My Selected Class
                   </Link>
                 </li>
                 <li>
-                  <Link to="">
+                  <Link to="enroll-class">
                     <FaUsers></FaUsers> My Enrolled Class
                   </Link>
                 </li>
                 <li>
-                  <Link to="">
+                  <Link to="pyment-class">
                     <FaUsers></FaUsers> Pyment History
                   </Link>
                 </li>

@@ -16,6 +16,9 @@ import InstructorRoute from "./InstructorRoute";
 import ManageClass from "../pages/Dashboard/ManageClass";
 import Classes from "../pages/Classes/Classes";
 import FeedBack from "../pages/Dashboard/FeedBack";
+import SelectedClass from "../pages/Dashboard/StudentDashboard/SelectedClass";
+import EnrollClass from "../pages/Dashboard/StudentDashboard/EnrollClass";
+import PymentHistory from "../pages/Dashboard/StudentDashboard/PymentHistory";
 
 export const routes = createBrowserRouter([
   {
@@ -92,6 +95,18 @@ export const routes = createBrowserRouter([
             <AddClass></AddClass>
           </InstructorRoute>
         ),
+      },
+      {
+        path: "select-class",
+        element: <SelectedClass></SelectedClass>,
+      },
+      {
+        path: "enroll-class",
+        element: <EnrollClass></EnrollClass>,
+      },
+      {
+        path: "pyment-class",
+        element: <PymentHistory></PymentHistory>,
       },
     ],
   },
